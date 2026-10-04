@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <title>Messages | PayAlert</title>
+
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+
+  <body class="admin-theme">
+    <div class="dashboard-layout">
+      <!-- ================= SIDEBAR ================= -->
+
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html">
+          <span class="logo-mark">₹</span>
+          PayAlert
+        </a>
+
+        <a class="side-link" href="dashboard.html"> 🏠 Dashboard </a>
+
+        <a class="side-link" href="users.html"> 👥 Users </a>
+
+        <a class="side-link" href="payments.html"> 💳 Payments </a>
+
+        <a class="side-link" href="reminders.html"> 🔔 Reminders </a>
+
+        <a class="side-link" href="reminder-templates.html"> 📝 Templates </a>
+
+        <a class="side-link" href="reports.html"> 📊 Reports </a>
+
+        <a class="side-link" href="messages.html"> ✉️ Messages </a>
+
+        <a class="side-link" href="profile.html"> 👤 Profile </a>
+
+        <a class="side-link" href="#" onclick="logout()"> 🚪 Logout </a>
+      </aside>
+
+      <!-- ================= MAIN ================= -->
+
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Messages</h1>
+
+            <p>Contact messages from users.</p>
+          </div>
+        </div>
+
+        <!-- ================= MESSAGE LIST ================= -->
+
+        <div class="cards" id="adminMessageCards">
+          <p class="empty">Loading messages...</p>
+        </div>
+      </main>
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="../ASSEST/js/common.js"></script>
+
+    <script src="../ASSEST/js/admin.js"></script>
+  </body>
+</html>

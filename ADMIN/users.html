@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Users | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body class="admin-theme">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        ><a class="side-link" href="dashboard.html">🏠 Dashboard</a
+        ><a class="side-link" href="users.html">👥 Users</a
+        ><a class="side-link" href="payments.html">💳 Payments</a
+        ><a class="side-link" href="reminders.html">🔔 Reminders</a
+        ><a class="side-link" href="reminder-templates.html">📝 Templates</a
+        ><a class="side-link" href="reports.html">📊 Reports</a
+        ><a class="side-link" href="messages.html">✉️ Messages</a
+        ><a class="side-link" href="profile.html">👤 Profile</a
+        ><a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Users</h1>
+            <p>Manage registered users.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="search-row">
+            <input id="userSearch" placeholder="Search users..." />
+          </div>
+          <div class="table-wrap">
+            <table id="userTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Payments</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="userRows">
+                <tr>
+                  <td colspan="5" class="empty">Loading users...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/admin.js"></script>
+  </body>
+</html>

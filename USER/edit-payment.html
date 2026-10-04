@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Edit Payment | PayAlert</title>
+
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+
+  <body class="user-theme">
+    <div class="dashboard-layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html">
+          <span class="logo-mark">₹</span>PayAlert
+        </a>
+
+        <a class="side-link" href="dashboard.html"> 🏠 Dashboard </a>
+
+        <a class="side-link" href="add-payment.html"> ➕ Add Payment </a>
+
+        <a class="side-link" href="payments.html"> 💳 Payments </a>
+
+        <a class="side-link" href="reminders.html"> 🔔 Reminders </a>
+
+        <a class="side-link" href="reports.html"> 📊 Reports </a>
+
+        <a class="side-link" href="profile.html"> 👤 Profile </a>
+
+        <a class="side-link" href="notification-settings.html">
+          ⚙️ Notifications
+        </a>
+
+        <a class="side-link" href="#" onclick="logout()"> 🚪 Logout </a>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Edit Payment</h1>
+            <p>Update your payment information.</p>
+          </div>
+
+          <a class="btn btn-outline" href="payments.html"> ← Back </a>
+        </div>
+
+        <div class="form-card">
+          <form id="editPaymentForm">
+            <div class="form-grid">
+              <!-- PAYMENT NAME -->
+              <div class="form-group">
+                <label>Payment / Service Name</label>
+
+                <input
+                  id="editName"
+                  name="name"
+                  required
+                  placeholder="Netflix"
+                />
+              </div>
+
+              <!-- CATEGORY -->
+              <div class="form-group">
+                <label>Category</label>
+
+                <select id="editCategory" name="category">
+                  <option>Entertainment</option>
+                  <option>Mobile</option>
+                  <option>Utilities</option>
+                  <option>Education</option>
+                  <option>Shopping</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <!-- AMOUNT -->
+              <div class="form-group">
+                <label>Amount (₹)</label>
+
+                <input
+                  id="editAmount"
+                  name="amount"
+                  type="number"
+                  min="0"
+                  required
+                />
+              </div>
+
+              <!-- DUE DATE -->
+              <div class="form-group">
+                <label>Due Date</label>
+
+                <input id="editDueDate" name="dueDate" type="date" required />
+              </div>
+
+              <!-- FREQUENCY -->
+              <div class="form-group">
+                <label>Frequency</label>
+
+                <select id="editFrequency" name="frequency">
+                  <option>Monthly</option>
+                  <option>Weekly</option>
+                  <option>Quarterly</option>
+                  <option>Yearly</option>
+                  <option>One Time</option>
+                </select>
+              </div>
+
+              <!-- REMINDER -->
+              <div class="form-group">
+                <label>Reminder Before</label>
+
+                <select id="editReminder" name="reminder">
+                  <option value="1">1 day</option>
+                  <option value="3">3 days</option>
+                  <option value="5">5 days</option>
+                  <option value="7">7 days</option>
+                </select>
+              </div>
+
+              <!-- NOTES -->
+              <div class="form-group full">
+                <label>Notes</label>
+
+                <textarea
+                  id="editNotes"
+                  name="notes"
+                  rows="4"
+                  placeholder="Optional notes"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a class="btn btn-outline" href="payments.html"> Cancel </a>
+
+              <button type="submit" class="btn btn-primary">
+                Update Payment
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/user.js"></script>
+
+    <script>
+      console.log("EDIT PAGE SCRIPT LOADED");
+
+      async function loadPaymentForEdit() {
+        const params = new URLSearchParams(window.location.search);
+        const paymentId = params.get("id");
+
+        const user = JSON.parse(
+          window.localStorage.getItem("payalert_user") || "{}",
+        );
+
+        console.log("PAYMENT ID:", paymentId);
+        console.log("USER ID:", user.id);
+
+        if (!paymentId || !user.id) {
+          alert("Payment information not found.");
+          return;
+        }
+
+        const response = await fetch(
+          `http://localhost:5000/api/payment-details?id=${paymentId}&user_id=${user.id}`,
+        );
+
+        const payment = await response.json();
+
+        console.log("EDIT PAYMENT:", payment);
+
+        if (!response.ok) {
+          alert(payment.message || "Payment not found.");
+          return;
+        }
+
+        document.getElementById("editName").value = payment.name || "";
+
+        document.getElementById("editCategory").value =
+          payment.category || "Other";
+
+        document.getElementById("editAmount").value = payment.amount || "";
+
+        if (payment.due_date) {
+          const dueDate = new Date(payment.due_date);
+
+          const year = dueDate.getFullYear();
+          const month = String(dueDate.getMonth() + 1).padStart(2, "0");
+          const day = String(dueDate.getDate()).padStart(2, "0");
+
+          document.getElementById("editDueDate").value =
+            `${year}-${month}-${day}`;
+        } else {
+          document.getElementById("editDueDate").value = "";
+        }
+        document.getElementById("editFrequency").value =
+          payment.frequency || "Monthly";
+
+        document.getElementById("editReminder").value =
+          payment.reminder_before || 1;
+
+        document.getElementById("editNotes").value = payment.description || "";
+      }
+
+      loadPaymentForEdit();
+      // =====================================================
+      // UPDATE PAYMENT
+      // =====================================================
+
+      const editForm = document.getElementById("editPaymentForm");
+
+      if (editForm) {
+        editForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const user = JSON.parse(
+            localStorage.getItem("payalert_user") || "{}",
+          );
+
+          const params = new URLSearchParams(window.location.search);
+          const paymentId = params.get("id");
+
+          if (!user.id) {
+            alert("Please login first.");
+            return;
+          }
+
+          if (!paymentId) {
+            alert("Payment ID not found.");
+            return;
+          }
+
+          const paymentData = {
+            id: paymentId,
+            user_id: user.id,
+            name: document.getElementById("editName").value.trim(),
+            category: document.getElementById("editCategory").value,
+            amount: Number(document.getElementById("editAmount").value),
+            due_date: document.getElementById("editDueDate").value,
+            frequency: document.getElementById("editFrequency").value,
+            reminder_before: Number(
+              document
+                .getElementById("editReminder")
+                .value.replace(" day", "")
+                .replace(" days", ""),
+            ),
+            description: document.getElementById("editNotes").value.trim(),
+          };
+
+          console.log("UPDATE PAYMENT DATA:", paymentData);
+
+          try {
+            const response = await fetch("http://localhost:5000/api/payments", {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(paymentData),
+            });
+
+            const data = await response.json();
+
+            console.log("UPDATE PAYMENT RESPONSE:", data);
+
+            if (response.ok) {
+              alert("Payment updated successfully!");
+
+              window.location.href = "payments.html";
+            } else {
+              alert(data.message || "Failed to update payment.");
+            }
+          } catch (error) {
+            console.error("Update payment error:", error);
+
+            alert("Unable to connect to the server.");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

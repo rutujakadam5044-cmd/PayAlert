@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dashboard | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body class="user-theme">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        ><a class="side-link" href="dashboard.html">🏠 Dashboard</a
+        ><a class="side-link" href="add-payment.html">➕ Add Payment</a
+        ><a class="side-link" href="payments.html">💳 Payments</a
+        ><a class="side-link" href="reminders.html">🔔 Reminders</a
+        ><a class="side-link" href="reports.html">📊 Reports</a
+        ><a class="side-link" href="profile.html">👤 Profile</a
+        ><a class="side-link" href="notification-settings.html"
+          >⚙️ Notifications</a
+        ><a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+      <main class="main">
+        <div class="welcome">
+          <h1>Welcome back, <span data-user-name>User</span> 👋</h1>
+          <p>Here is your payment overview.</p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat">
+            <span class="icon">💳</span
+            ><span class="label">Total Payments</span>
+            <div class="value" id="paymentCount">0</div>
+          </div>
+          <div class="stat">
+            <span class="icon">💰</span><span class="label">Total Amount</span>
+            <div class="value" id="totalAmount">₹0</div>
+          </div>
+          <div class="stat">
+            <span class="icon">🔔</span><span class="label">Due Soon</span>
+            <div class="value" id="DueSoonCount">0</div>
+          </div>
+          <div class="stat">
+            <span class="icon">✅</span
+            ><span class="label">Paid This Month</span>
+            <div class="value" id="paidThisMonthCount">0</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Upcoming Payments</h2>
+            <a class="btn btn-secondary" href="payments.html">View All</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Payment</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="paymentRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/user.js"></script>
+    <script src="../ASSEST/js/common.js"></script>
+
+    <script>
+      requireUser();
+    </script>
+
+    <script src="../ASSEST/js/user.js"></script>
+  </body>
+</html>

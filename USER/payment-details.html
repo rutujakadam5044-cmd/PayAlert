@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Payment-Details | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body class="user-theme">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        ><a class="side-link" href="dashboard.html">🏠 Dashboard</a
+        ><a class="side-link" href="add-payment.html">➕ Add Payment</a
+        ><a class="side-link" href="payments.html">💳 Payments</a
+        ><a class="side-link" href="reminders.html">🔔 Reminders</a
+        ><a class="side-link" href="reports.html">📊 Reports</a
+        ><a class="side-link" href="profile.html">👤 Profile</a
+        ><a class="side-link" href="notification-settings.html"
+          >⚙️ Notifications</a
+        ><a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Payment Details</h1>
+            <p>View payment information.</p>
+          </div>
+          <a class="btn btn-outline" href="payments.html">← Back</a>
+        </div>
+        <div class="panel">
+          <div class="detail-grid">
+            <div class="detail-item">
+              <strong>Service</strong><span id="dName">Netflix</span>
+            </div>
+            <div class="detail-item">
+              <strong>Category</strong><span id="dCategory">-</span>
+            </div>
+            <div class="detail-item">
+              <strong>Amount</strong><span id="dAmount">₹649</span>
+            </div>
+            <div class="detail-item">
+              <strong>Due Date</strong><span id="dDueDate">-</span>
+            </div>
+            <div class="detail-item">
+              <strong>Frequency</strong><span id="dFrequency">-</span>
+            </div>
+            <div class="detail-item">
+              <strong>Status</strong
+              ><span id="dStatus" class="badge badge-warning">Upcoming</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/user.js"></script>
+    <script>
+      async function loadPaymentDetails() {
+        const params = new URLSearchParams(window.location.search);
+        const paymentId = params.get("id");
+
+        const user = JSON.parse(
+          window.localStorage.getItem("payalert_user") || "{}",
+        );
+
+        console.log("PAYMENT ID:", paymentId);
+        console.log("CURRENT USER:", user);
+
+        if (!paymentId || !user.id) {
+          console.error("Payment ID or user ID missing.");
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `http://localhost:5000/api/payment-details?id=${paymentId}&user_id=${user.id}`,
+          );
+
+          const payment = await response.json();
+
+          console.log("PAYMENT DETAILS:", payment);
+
+          if (!response.ok) {
+            console.error(payment.message);
+            return;
+          }
+
+          document.getElementById("dName").textContent = payment.name || "-";
+
+          document.getElementById("dCategory").textContent =
+            payment.category || "-";
+
+          document.getElementById("dAmount").textContent = money(
+            payment.amount,
+          );
+
+          document.getElementById("dDueDate").textContent = formatDate(
+            payment.due_date,
+          );
+
+          document.getElementById("dFrequency").textContent =
+            payment.frequency || "-";
+
+          const statusElement = document.getElementById("dStatus");
+
+          statusElement.textContent = payment.status || "Upcoming";
+
+          statusElement.className =
+            "badge " +
+            (payment.status === "Paid" ? "badge-success" : "badge-warning");
+        } catch (error) {
+          console.error("Payment details error:", error);
+        }
+      }
+
+      loadPaymentDetails();
+    </script>
+  </body>
+</html>

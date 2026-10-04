@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>User Details | PayAlert</title>
+
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+
+  <body class="admin-theme">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html">
+          <span class="logo-mark">₹</span>PayAlert
+        </a>
+
+        <a class="side-link" href="dashboard.html">🏠 Dashboard</a>
+        <a class="side-link" href="users.html">👥 Users</a>
+        <a class="side-link" href="payments.html">💳 Payments</a>
+        <a class="side-link" href="reminders.html">🔔 Reminders</a>
+        <a class="side-link" href="reminder-templates.html">📝 Templates</a>
+        <a class="side-link" href="reports.html">📊 Reports</a>
+        <a class="side-link" href="messages.html">✉️ Messages</a>
+        <a class="side-link" href="profile.html">👤 Profile</a>
+        <a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+
+      <main class="main">
+        <!-- PAGE HEADER -->
+
+        <div class="page-head">
+          <div>
+            <h1>User Details</h1>
+            <p>View registered user information.</p>
+          </div>
+
+          <a class="btn btn-outline" href="users.html"> ← Back </a>
+        </div>
+
+        <!-- USER INFORMATION -->
+
+        <div class="panel">
+          <div class="detail-grid">
+            <div class="detail-item">
+              <strong>Name</strong>
+              <span id="userName">Loading...</span>
+            </div>
+
+            <div class="detail-item">
+              <strong>Email</strong>
+              <span id="userEmail">Loading...</span>
+            </div>
+
+            <div class="detail-item">
+              <strong>Phone</strong>
+              <span id="userPhone">Loading...</span>
+            </div>
+
+            <div class="detail-item">
+              <strong>Status</strong>
+              <span class="badge badge-success"> Active </span>
+            </div>
+
+            <div class="detail-item">
+              <strong>Joined</strong>
+              <span id="userJoined">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- USER PAYMENTS -->
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>User Payments</h2>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Due Date</th>
+                  <th>Frequency</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="userPaymentRows">
+                <tr>
+                  <td colspan="6" class="empty">Loading payments...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/admin.js"></script>
+
+    <script>
+      // =====================================================
+      // LOAD SINGLE USER DETAILS
+      // =====================================================
+
+      async function loadUserDetails() {
+        const params = new URLSearchParams(window.location.search);
+
+        const userId = params.get("id");
+
+        if (!userId) {
+          alert("User ID not found.");
+
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `http://localhost:5000/api/admin/user-details?id=${userId}`,
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || "Failed to load user details");
+          }
+
+          console.log("USER DETAILS:", data);
+
+          // =================================================
+          // USER INFORMATION
+          // =================================================
+
+          document.querySelector("#userName").textContent =
+            data.user.name || "N/A";
+
+          document.querySelector("#userEmail").textContent =
+            data.user.email || "N/A";
+
+          document.querySelector("#userPhone").textContent =
+            data.user.phone || "Not provided";
+
+          document.querySelector("#userJoined").textContent = formatDate(
+            data.user.created_at,
+          );
+
+          // =================================================
+          // USER PAYMENTS
+          // =================================================
+
+          const paymentRows = document.querySelector("#userPaymentRows");
+
+          if (data.payments.length === 0) {
+            paymentRows.innerHTML = `
+              <tr>
+                <td colspan="6" class="empty">
+                  No payments found.
+                </td>
+              </tr>
+            `;
+
+            return;
+          }
+
+          paymentRows.innerHTML = data.payments
+            .map(
+              (payment) => `
+                <tr>
+
+                  <td>
+                    ${payment.name}
+                  </td>
+
+                  <td>
+                    ${payment.category || "N/A"}
+                  </td>
+
+                  <td>
+                    ${money(payment.amount)}
+                  </td>
+
+                  <td>
+                    ${formatDate(payment.due_date)}
+                  </td>
+
+                  <td>
+                    ${payment.frequency || "N/A"}
+                  </td>
+
+                  <td>
+                    <span class="badge badge-success">
+                      ${payment.status}
+                    </span>
+                  </td>
+
+                </tr>
+              `,
+            )
+            .join("");
+        } catch (error) {
+          console.error("Load user details error:", error);
+
+          document.querySelector("#userName").textContent = "Unable to load";
+
+          document.querySelector("#userEmail").textContent = "Unable to load";
+
+          document.querySelector("#userPhone").textContent = "Unable to load";
+
+          document.querySelector("#userJoined").textContent = "Unable to load";
+
+          document.querySelector("#userPaymentRows").innerHTML = `
+            <tr>
+              <td colspan="6" class="empty">
+                Unable to load user details.
+              </td>
+            </tr>
+          `;
+        }
+      }
+
+      // Load user when page opens
+
+      loadUserDetails();
+    </script>
+  </body>
+</html>

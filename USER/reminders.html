@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Reminders | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body class="user-theme">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        ><a class="side-link" href="dashboard.html">🏠 Dashboard</a
+        ><a class="side-link" href="add-payment.html">➕ Add Payment</a
+        ><a class="side-link" href="payments.html">💳 Payments</a
+        ><a class="side-link" href="reminders.html">🔔 Reminders</a
+        ><a class="side-link" href="reports.html">📊 Reports</a
+        ><a class="side-link" href="profile.html">👤 Profile</a
+        ><a class="side-link" href="notification-settings.html"
+          >⚙️ Notifications</a
+        ><a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>Reminders</h1>
+            <p>Keep track of your upcoming payment reminders.</p>
+          </div>
+        </div>
+          <div class="cards" id="reminderCards">
+                <p class="empty">Loading reminders...</p>
+              </div>
+            <button class="btn btn-outline">View Payment</button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/user.js"></script>
+    <script src="../ASSEST/js/common.js"></script>
+
+<script>
+  requireUser();
+</script>
+
+<script src="../ASSEST/js/user.js"></script>
+  </body>
+</html>

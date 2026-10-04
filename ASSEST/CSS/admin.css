@@ -1,0 +1,16 @@
+.admin-theme .sidebar {
+  background: #111827;
+}
+.admin-theme .main {
+  background: #f4f6fa;
+}
+.admin-theme .stat .value {
+  color: #111827;
+}
+/* ================================
+   MOBILE MENU
+================================ */
+
+.mobile-menu-btn {
+  display: none;
+}

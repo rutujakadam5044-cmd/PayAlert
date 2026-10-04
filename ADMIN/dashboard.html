@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dashboard | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body class="admin-theme">
+    <div class="dashboard-layout">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        ><a class="side-link" href="dashboard.html">🏠 Dashboard</a
+        ><a class="side-link" href="users.html">👥 Users</a
+        ><a class="side-link" href="payments.html">💳 Payments</a
+        ><a class="side-link" href="reminders.html">🔔 Reminders</a
+        ><a class="side-link" href="reminder-templates.html">📝 Templates</a
+        ><a class="side-link" href="reports.html">📊 Reports</a
+        ><a class="side-link" href="messages.html">✉️ Messages</a
+        ><a class="side-link" href="profile.html">👤 Profile</a
+        ><a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+      <main class="main">
+        <div class="welcome">
+          <h1>Admin Dashboard</h1>
+          <p>System overview and recent activity.</p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat">
+            <span class="icon">👥</span><span class="label">Total Users</span>
+            <div class="value" id="totalUsers">0</div>
+          </div>
+          <div class="stat">
+            <span class="icon">💳</span><span class="label">Payments</span>
+            <div class="value" id="totalPayments">0</div>
+          </div>
+          <div class="stat">
+            <span class="icon">🔔</span><span class="label">Reminders</span>
+            <div class="value" id="totalReminders">0</div>
+          </div>
+          <div id="totalMessage" class="stat">
+            <span class="icon">✉️</span>
+            <span class="label">Messages</span>
+            <div class="value" id="totalMessages">0</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Recent Payments</h2>
+            <a class="btn btn-secondary" href="payments.html">View All</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Amount</th>
+                  <th>Due</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="adminPaymentRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/admin.js"></script>
+  </body>
+</html>

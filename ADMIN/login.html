@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Admin Login | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body>
+    <div class="auth-page">
+      <div class="auth-box">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        >
+        <h1>Admin Login</h1>
+        <p class="sub">Access the administration dashboard.</p>
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label>Email</label
+            ><input
+              id="adminEmail"
+              type="email"
+              required
+              placeholder="admin@example.com"
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input id="adminPassword" type="password" required />
+          </div>
+          <button class="btn btn-primary" class="btn btn-primary w-full">
+            Login as Admin
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="../ASSEST/js/auth.js"></script>
+    <script src="../ASSEST/js/common.js"></script>
+  </body>
+</html>

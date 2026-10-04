@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Payments | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body class="user-theme">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        ><a class="side-link" href="dashboard.html">🏠 Dashboard</a
+        ><a class="side-link" href="add-payment.html">➕ Add Payment</a
+        ><a class="side-link" href="payments.html">💳 Payments</a
+        ><a class="side-link" href="reminders.html">🔔 Reminders</a
+        ><a class="side-link" href="reports.html">📊 Reports</a
+        ><a class="side-link" href="profile.html">👤 Profile</a
+        ><a class="side-link" href="notification-settings.html"
+          >⚙️ Notifications</a
+        ><a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>My Payments</h1>
+            <p>All your recurring payments.</p>
+          </div>
+          <a class="btn btn-primary" href="add-payment.html">+ Add Payment</a>
+        </div>
+        <div class="panel">
+          <div class="search-row">
+            <input
+              placeholder="Search payments..."
+              oninput="filterRows(this, 'paymentTable')"
+            />
+          </div>
+          <div class="table-wrap">
+            <table id="paymentTable">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="paymentRows"></tbody>
+            </table>
+          </div>
+        </div>
+        <script>
+          function filterRows(i, id) {
+            const q = i.value.toLowerCase();
+            document
+              .querySelectorAll("#" + id + " tbody tr")
+              .forEach(
+                (r) =>
+                  (r.style.display = r.textContent.toLowerCase().includes(q)
+                    ? ""
+                    : "none"),
+              );
+          }
+        </script>
+      </main>
+    </div>
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/user.js"></script>
+    <script>
+      requireUser();
+    </script>
+  </body>
+</html>

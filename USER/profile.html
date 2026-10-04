@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Profile | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body class="user-theme">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <a class="logo" href="dashboard.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        ><a class="side-link" href="dashboard.html">🏠 Dashboard</a
+        ><a class="side-link" href="add-payment.html">➕ Add Payment</a
+        ><a class="side-link" href="payments.html">💳 Payments</a
+        ><a class="side-link" href="reminders.html">🔔 Reminders</a
+        ><a class="side-link" href="reports.html">📊 Reports</a
+        ><a class="side-link" href="profile.html">👤 Profile</a
+        ><a class="side-link" href="notification-settings.html"
+          >⚙️ Notifications</a
+        ><a class="side-link" href="#" onclick="logout()">🚪 Logout</a>
+      </aside>
+      <main class="main">
+        <div class="page-head">
+          <div>
+            <h1>My Profile</h1>
+            <p>Manage your account information.</p>
+          </div>
+        </div>
+        <div class="form-card">
+          <form id="profileForm">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="profileName" placeholder="Your name" />
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                id="profileEmail"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" id="profilePhone" placeholder="+91" />
+            </div>
+
+            <div class="form-group">
+              <label>New Password</label>
+              <input
+                type="password"
+                id="profilePassword"
+                placeholder="Leave blank to keep current password"
+                autocomplete="new-password"
+              />
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Update Profile
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src="../ASSEST/js/common.js"></script>
+    <script src="../ASSEST/js/user.js"></script>
+    <script src="../ASSEST/js/common.js"></script>
+
+    <script>
+      requireUser();
+    </script>
+
+    <script src="../ASSEST/js/user.js"></script>
+  </body>
+</html>

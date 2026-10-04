@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Register | PayAlert</title>
+    <link rel="stylesheet" href="../ASSEST/CSS/style.css" />
+  </head>
+  <body>
+    <div class="auth-page">
+      <div class="auth-box">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">₹</span>PayAlert</a
+        >
+        <h1>Create Account</h1>
+        <p class="sub">Start tracking your recurring payments.</p>
+        <form id="registerForm">
+          <div class="form-group">
+            <label>Full Name</label><input id="name" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label><input id="email" type="email" required />
+          </div>
+          <div class="form-group">
+            <label>Password</label
+            ><input id="password" type="password" minlength="6" required />
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label
+            ><input
+              id="confirmPassword"
+              type="password"
+              minlength="6"
+              required
+            />
+          </div>
+          <button class="btn btn-primary w-full">Create Account</button>
+        </form>
+        <p class="auth-footer">
+          Already registered? <a href="login.html" class="auth-link">Login</a>
+        </p>
+      </div>
+    </div>
+    <script src="../ASSEST/js/auth.js"></script>
+    <script src="../ASSEST/js/common.js"></script>
+  </body>
+</html>
