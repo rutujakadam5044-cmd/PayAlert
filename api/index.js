@@ -60,12 +60,6 @@ app.get("/api/test-db", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
 app.post("/api/auth/register", registerUser);
 app.post("/api/auth/login", loginUser);
 app.post("/api/payments", addPayment);
@@ -74,7 +68,6 @@ app.get("/api/payment-details", getPaymentById);
 app.put("/api/payments", updatePayment);
 app.delete("/api/payments", deletePayment);
 app.put("/api/payments/mark-paid", markPaymentAsPaid);
-app.put("/api/payments", updatePayment);
 app.get("/api/auth/profile", getUserProfile);
 app.put("/api/auth/profile", updateUserProfile);
 app.get("/api/auth/notification-settings", getNotificationSettings);
@@ -108,3 +101,4 @@ app.get("/api/test-users", async (req, res) => {
     });
   }
 });
+module.exports = app;
