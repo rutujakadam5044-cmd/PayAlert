@@ -75,7 +75,7 @@
 
         try {
           const response = await fetch(
-            `http://localhost:5000/api/payment-details?id=${paymentId}&user_id=${user.id}`,
+            `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payment-details?id=${paymentId}&user_id=${user.id}`,
           );
 
           const payment = await response.json();

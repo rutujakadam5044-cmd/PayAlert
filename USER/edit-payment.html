@@ -168,7 +168,7 @@
         }
 
         const response = await fetch(
-          `http://localhost:5000/api/payment-details?id=${paymentId}&user_id=${user.id}`,
+          `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payment-details?id=${paymentId}&user_id=${user.id}`,
         );
 
         const payment = await response.json();
@@ -256,13 +256,16 @@
           console.log("UPDATE PAYMENT DATA:", paymentData);
 
           try {
-            const response = await fetch("http://localhost:5000/api/payments", {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
+            const response = await fetch(
+              "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments",
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(paymentData),
               },
-              body: JSON.stringify(paymentData),
-            });
+            );
 
             const data = await response.json();
 

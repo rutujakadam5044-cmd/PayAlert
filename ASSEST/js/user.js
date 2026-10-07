@@ -16,7 +16,7 @@ async function renderReminders() {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/payments?user_id=${user.id}`,
+      `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -132,7 +132,7 @@ async function renderPayments() {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/payments?user_id=${user.id}`,
+      `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -343,16 +343,19 @@ async function deletePayment(paymentId) {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/payments", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: paymentId,
+          user_id: user.id,
+        }),
       },
-      body: JSON.stringify({
-        id: paymentId,
-        user_id: user.id,
-      }),
-    });
+    );
 
     const data = await response.json();
 
@@ -392,7 +395,7 @@ async function markPaymentAsPaid(paymentId) {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/payments/mark-paid",
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments/mark-paid",
       {
         method: "PUT",
         headers: {
@@ -463,13 +466,16 @@ if (form) {
     console.log("PAYMENT DATA:", paymentData);
 
     try {
-      const response = await fetch("http://localhost:5000/api/payments", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(paymentData),
         },
-        body: JSON.stringify(paymentData),
-      });
+      );
 
       const data = await response.json();
 
@@ -511,7 +517,7 @@ async function loadProfile() {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/auth/profile?user_id=${user.id}`,
+      `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/profile?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -566,13 +572,16 @@ if (profileForm) {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/profile",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(profileData),
         },
-        body: JSON.stringify(profileData),
-      });
+      );
 
       const data = await response.json();
 
@@ -618,7 +627,7 @@ async function loadNotificationSettings() {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/auth/notification-settings?user_id=${user.id}`,
+      `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/notification-settings?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -662,7 +671,7 @@ async function loadReports() {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/payments?user_id=${user.id}`,
+      `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -807,7 +816,7 @@ if (settingsForm) {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/notification-settings",
+        "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/notification-settings",
         {
           method: "PUT",
           headers: {

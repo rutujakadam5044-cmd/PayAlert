@@ -40,20 +40,23 @@ if (contactForm) {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
+      const response = await fetch(
+        "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/contact",
+        {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+          }),
         },
-
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          subject: subject,
-          message: message,
-        }),
-      });
+      );
 
       const data = await response.json();
 

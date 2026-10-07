@@ -33,7 +33,9 @@ async function loadAdminUsers() {
   if (!userRows) return;
 
   try {
-    const response = await fetch("http://localhost:5000/api/admin/users");
+    const response = await fetch(
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/users",
+    );
 
     const data = await response.json();
 
@@ -109,7 +111,9 @@ async function loadAdminDashboardStats() {
   if (!totalUsers || !totalPayments) return;
 
   try {
-    const response = await fetch("http://localhost:5000/api/admin/users");
+    const response = await fetch(
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/users",
+    );
 
     const data = await response.json();
 
@@ -128,7 +132,7 @@ async function loadAdminDashboardStats() {
 
     totalPayments.textContent = paymentCount;
     const reminderResponse = await fetch(
-      "http://localhost:5000/api/admin/reminders",
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reminders",
     );
 
     const reminderData = await reminderResponse.json();
@@ -139,7 +143,7 @@ async function loadAdminDashboardStats() {
 
     totalReminders.textContent = reminderData.count;
     const messageResponse = await fetch(
-      "http://localhost:5000/api/admin/messages/count",
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/messages/count",
     );
 
     const messageData = await messageResponse.json();
@@ -164,7 +168,9 @@ async function loadAdminReminders() {
   if (!reminderCards) return;
 
   try {
-    const response = await fetch("http://localhost:5000/api/admin/reminders");
+    const response = await fetch(
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reminders",
+    );
 
     const data = await response.json();
 
@@ -231,7 +237,9 @@ async function loadAdminPayments() {
   if (!paymentRows) return;
 
   try {
-    const response = await fetch("http://localhost:5000/api/admin/payments");
+    const response = await fetch(
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/payments",
+    );
 
     const data = await response.json();
 
@@ -317,7 +325,9 @@ async function loadAdminReports() {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/admin/reports");
+    const response = await fetch(
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reports",
+    );
 
     const data = await response.json();
 
@@ -355,7 +365,9 @@ async function loadAdminMessages() {
   if (!messageCards) return;
 
   try {
-    const response = await fetch("http://localhost:5000/api/admin/messages");
+    const response = await fetch(
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/messages",
+    );
 
     const data = await response.json();
 
@@ -434,7 +446,7 @@ async function loadReminderTemplates() {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/admin/reminder-templates",
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reminder-templates",
     );
 
     const data = await response.json();
@@ -550,7 +562,7 @@ if (templateForm) {
 
       if (editingId) {
         response = await fetch(
-          "http://localhost:5000/api/admin/reminder-templates",
+          "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reminder-templates",
           {
             method: "PUT",
             headers: {
@@ -571,7 +583,7 @@ if (templateForm) {
       // =================================================
       else {
         response = await fetch(
-          "http://localhost:5000/api/admin/reminder-templates",
+          "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reminder-templates",
           {
             method: "POST",
             headers: {
@@ -627,7 +639,7 @@ if (templateForm) {
 async function editReminderTemplate(id) {
   try {
     const response = await fetch(
-      "http://localhost:5000/api/admin/reminder-templates",
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reminder-templates",
     );
 
     const templates = await response.json();
@@ -678,7 +690,7 @@ async function deleteReminderTemplate(id) {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/admin/reminder-templates",
+      "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/admin/reminder-templates",
       {
         method: "DELETE",
         headers: {

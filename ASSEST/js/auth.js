@@ -40,7 +40,7 @@ if (registerForm) {
     try {
       console.log("Sending registration request...");
 
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(const response = await fetch("https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +103,7 @@ if (userLoginForm) {
     try {
       console.log("Sending login request...");
 
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(const response = await fetch("https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/login",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
