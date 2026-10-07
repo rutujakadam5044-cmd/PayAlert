@@ -40,17 +40,20 @@ if (registerForm) {
     try {
       console.log("Sending registration request...");
 
-      const response = await fetch(const response = await fetch("https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password,
+          }),
         },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          password: password,
-        }),
-      });
+      );
 
       const data = await response.json();
 
@@ -103,16 +106,19 @@ if (userLoginForm) {
     try {
       console.log("Sending login request...");
 
-      const response = await fetch(const response = await fetch("https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/login",{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
         },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
+      );
 
       const data = await response.json();
 
@@ -133,6 +139,7 @@ if (userLoginForm) {
     }
   });
 }
+
 // =====================================================
 // ADMIN LOGIN
 // =====================================================
