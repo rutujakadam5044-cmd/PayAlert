@@ -16,8 +16,7 @@ async function renderReminders() {
 
   try {
     const response = await fetch(
-      `Replace:
-https://payalert-azure.vercel.app/api/payments?user_id=${user.id}`,
+      `https://payalert-azure.vercel.app/api/payments?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -133,8 +132,7 @@ async function renderPayments() {
 
   try {
     const response = await fetch(
-      `Replace:
-https://payalert-azure.vercel.app/api/payments?user_id=${user.id}`,
+      `https://payalert-azure.vercel.app/api/payments?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -346,8 +344,7 @@ async function deletePayment(paymentId) {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/payments",
+      "https://payalert-azure.vercel.app/api/payments",
       {
         method: "DELETE",
         headers: {
@@ -398,8 +395,7 @@ async function markPaymentAsPaid(paymentId) {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/payments/mark-paid",
+      "https://payalert-azure.vercel.app/api/payments/mark-paid",
       {
         method: "PUT",
         headers: {
@@ -471,8 +467,7 @@ if (form) {
 
     try {
       const response = await fetch(
-        "Replace:
-https://payalert-azure.vercel.app/api/payments",
+        "https://payalert-azure.vercel.app/api/payments",
         {
           method: "POST",
           headers: {
@@ -522,8 +517,7 @@ async function loadProfile() {
 
   try {
     const response = await fetch(
-      `Replace:
-https://payalert-azure.vercel.app/api/auth/profile?user_id=${user.id}`,
+      `https://payalert-azure.vercel.app/api/auth/profile?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -579,8 +573,7 @@ if (profileForm) {
 
     try {
       const response = await fetch(
-        "Replace:
-https://payalert-azure.vercel.app/api/auth/profile",
+        "https://payalert-azure.vercel.app/api/auth/profile",
         {
           method: "PUT",
           headers: {
@@ -634,8 +627,7 @@ async function loadNotificationSettings() {
 
   try {
     const response = await fetch(
-      `Replace:
-https://payalert-azure.vercel.app/api/auth/notification-settings?user_id=${user.id}`,
+      `https://payalert-azure.vercel.app/api/auth/notification-settings?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -679,8 +671,7 @@ async function loadReports() {
 
   try {
     const response = await fetch(
-      `Replace:
-https://payalert-azure.vercel.app/api/payments?user_id=${user.id}`,
+      `https://payalert-azure.vercel.app/api/payments?user_id=${user.id}`,
     );
 
     const data = await response.json();
@@ -825,8 +816,7 @@ if (settingsForm) {
 
     try {
       const response = await fetch(
-        "Replace:
-https://payalert-azure.vercel.app/api/auth/notification-settings",
+        "https://payalert-azure.vercel.app/api/auth/notification-settings",
         {
           method: "PUT",
           headers: {
