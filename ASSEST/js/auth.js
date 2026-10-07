@@ -53,7 +53,7 @@ if (registerForm) {
             email: email,
             password: password,
           }),
-        },
+        }),
       );
 
       const data = await response.json();
