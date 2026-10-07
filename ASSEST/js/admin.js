@@ -34,8 +34,7 @@ async function loadAdminUsers() {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/users",
+      "https://payalert-azure.vercel.app/api/admin/users",
     );
 
     const data = await response.json();
@@ -113,8 +112,7 @@ async function loadAdminDashboardStats() {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/users",
+      "https://payalert-azure.vercel.app/api/admin/users",
     );
 
     const data = await response.json();
@@ -134,8 +132,7 @@ https://payalert-azure.vercel.app/api/admin/users",
 
     totalPayments.textContent = paymentCount;
     const reminderResponse = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/reminders",
+      "https://payalert-azure.vercel.app/api/admin/reminders",
     );
 
     const reminderData = await reminderResponse.json();
@@ -146,8 +143,7 @@ https://payalert-azure.vercel.app/api/admin/reminders",
 
     totalReminders.textContent = reminderData.count;
     const messageResponse = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/messages/count",
+      "https://payalert-azure.vercel.app/api/admin/messages/count",
     );
 
     const messageData = await messageResponse.json();
@@ -173,8 +169,7 @@ async function loadAdminReminders() {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/reminders",
+      "https://payalert-azure.vercel.app/api/admin/reminders",
     );
 
     const data = await response.json();
@@ -243,8 +238,7 @@ async function loadAdminPayments() {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/payments",
+      "https://payalert-azure.vercel.app/api/admin/payments",
     );
 
     const data = await response.json();
@@ -332,8 +326,7 @@ async function loadAdminReports() {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/reports",
+      "https://payalert-azure.vercel.app/api/admin/reports",
     );
 
     const data = await response.json();
@@ -373,8 +366,7 @@ async function loadAdminMessages() {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/messages",
+      "https://payalert-azure.vercel.app/api/admin/messages",
     );
 
     const data = await response.json();
@@ -454,8 +446,7 @@ async function loadReminderTemplates() {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/reminder-templates",
+      "https://payalert-azure.vercel.app/api/admin/reminder-templates",
     );
 
     const data = await response.json();
@@ -571,8 +562,7 @@ if (templateForm) {
 
       if (editingId) {
         response = await fetch(
-          "Replace:
-https://payalert-azure.vercel.app/api/admin/reminder-templates",
+          "https://payalert-azure.vercel.app/api/admin/reminder-templates",
           {
             method: "PUT",
             headers: {
@@ -593,8 +583,7 @@ https://payalert-azure.vercel.app/api/admin/reminder-templates",
       // =================================================
       else {
         response = await fetch(
-          "Replace:
-https://payalert-azure.vercel.app/api/admin/reminder-templates",
+          "https://payalert-azure.vercel.app/api/admin/reminder-templates",
           {
             method: "POST",
             headers: {
@@ -650,8 +639,7 @@ https://payalert-azure.vercel.app/api/admin/reminder-templates",
 async function editReminderTemplate(id) {
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/reminder-templates",
+      "https://payalert-azure.vercel.app/api/admin/reminder-templates",
     );
 
     const templates = await response.json();
@@ -702,8 +690,7 @@ async function deleteReminderTemplate(id) {
 
   try {
     const response = await fetch(
-      "Replace:
-https://payalert-azure.vercel.app/api/admin/reminder-templates",
+      "https://payalert-azure.vercel.app/api/admin/reminder-templates",
       {
         method: "DELETE",
         headers: {

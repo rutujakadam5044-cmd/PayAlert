@@ -121,8 +121,7 @@
 
         try {
           const response = await fetch(
-            `Replace:
-https://payalert-azure.vercel.app/api/admin/user-details?id=${userId}`,
+            `https://payalert-azure.vercel.app/api/admin/user-details?id=${userId}`,
           );
 
           const data = await response.json();
