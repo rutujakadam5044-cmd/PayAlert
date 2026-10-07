@@ -41,7 +41,7 @@ if (registerForm) {
       console.log("Sending registration request...");
 
       const response = await fetch(
-  "https://payalert-azure.vercel.app/api/auth/register",
+        "https://payalert-azure.vercel.app/api/auth/register",
         {
           method: "POST",
           headers: {
@@ -52,7 +52,7 @@ if (registerForm) {
             email: email,
             password: password,
           }),
-        }),
+        },
       );
 
       const data = await response.json();
@@ -107,7 +107,7 @@ if (userLoginForm) {
       console.log("Sending login request...");
 
       const response = await fetch(
-  "https://payalert-azure.vercel.app/api/auth/login",
+        "https://payalert-azure.vercel.app/api/auth/login",
         {
           method: "POST",
           headers: {
