@@ -41,7 +41,8 @@ if (contactForm) {
 
     try {
       const response = await fetch(
-        "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/contact",
+        "Replace:
+https://payalert-azure.vercel.app/api/contact",
         {
           method: "POST",
 

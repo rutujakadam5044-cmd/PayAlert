@@ -149,142 +149,144 @@
     <script src="../ASSEST/js/user.js"></script>
 
     <script>
-      console.log("EDIT PAGE SCRIPT LOADED");
+            console.log("EDIT PAGE SCRIPT LOADED");
 
-      async function loadPaymentForEdit() {
-        const params = new URLSearchParams(window.location.search);
-        const paymentId = params.get("id");
+            async function loadPaymentForEdit() {
+              const params = new URLSearchParams(window.location.search);
+              const paymentId = params.get("id");
 
-        const user = JSON.parse(
-          window.localStorage.getItem("payalert_user") || "{}",
-        );
+              const user = JSON.parse(
+                window.localStorage.getItem("payalert_user") || "{}",
+              );
 
-        console.log("PAYMENT ID:", paymentId);
-        console.log("USER ID:", user.id);
+              console.log("PAYMENT ID:", paymentId);
+              console.log("USER ID:", user.id);
 
-        if (!paymentId || !user.id) {
-          alert("Payment information not found.");
-          return;
-        }
+              if (!paymentId || !user.id) {
+                alert("Payment information not found.");
+                return;
+              }
 
-        const response = await fetch(
-          `https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payment-details?id=${paymentId}&user_id=${user.id}`,
-        );
+              const response = await fetch(
+                `Replace:
+      https://payalert-azure.vercel.app/api/payment-details?id=${paymentId}&user_id=${user.id}`,
+              );
 
-        const payment = await response.json();
+              const payment = await response.json();
 
-        console.log("EDIT PAYMENT:", payment);
+              console.log("EDIT PAYMENT:", payment);
 
-        if (!response.ok) {
-          alert(payment.message || "Payment not found.");
-          return;
-        }
+              if (!response.ok) {
+                alert(payment.message || "Payment not found.");
+                return;
+              }
 
-        document.getElementById("editName").value = payment.name || "";
+              document.getElementById("editName").value = payment.name || "";
 
-        document.getElementById("editCategory").value =
-          payment.category || "Other";
+              document.getElementById("editCategory").value =
+                payment.category || "Other";
 
-        document.getElementById("editAmount").value = payment.amount || "";
+              document.getElementById("editAmount").value = payment.amount || "";
 
-        if (payment.due_date) {
-          const dueDate = new Date(payment.due_date);
+              if (payment.due_date) {
+                const dueDate = new Date(payment.due_date);
 
-          const year = dueDate.getFullYear();
-          const month = String(dueDate.getMonth() + 1).padStart(2, "0");
-          const day = String(dueDate.getDate()).padStart(2, "0");
+                const year = dueDate.getFullYear();
+                const month = String(dueDate.getMonth() + 1).padStart(2, "0");
+                const day = String(dueDate.getDate()).padStart(2, "0");
 
-          document.getElementById("editDueDate").value =
-            `${year}-${month}-${day}`;
-        } else {
-          document.getElementById("editDueDate").value = "";
-        }
-        document.getElementById("editFrequency").value =
-          payment.frequency || "Monthly";
+                document.getElementById("editDueDate").value =
+                  `${year}-${month}-${day}`;
+              } else {
+                document.getElementById("editDueDate").value = "";
+              }
+              document.getElementById("editFrequency").value =
+                payment.frequency || "Monthly";
 
-        document.getElementById("editReminder").value =
-          payment.reminder_before || 1;
+              document.getElementById("editReminder").value =
+                payment.reminder_before || 1;
 
-        document.getElementById("editNotes").value = payment.description || "";
-      }
-
-      loadPaymentForEdit();
-      // =====================================================
-      // UPDATE PAYMENT
-      // =====================================================
-
-      const editForm = document.getElementById("editPaymentForm");
-
-      if (editForm) {
-        editForm.addEventListener("submit", async function (event) {
-          event.preventDefault();
-
-          const user = JSON.parse(
-            localStorage.getItem("payalert_user") || "{}",
-          );
-
-          const params = new URLSearchParams(window.location.search);
-          const paymentId = params.get("id");
-
-          if (!user.id) {
-            alert("Please login first.");
-            return;
-          }
-
-          if (!paymentId) {
-            alert("Payment ID not found.");
-            return;
-          }
-
-          const paymentData = {
-            id: paymentId,
-            user_id: user.id,
-            name: document.getElementById("editName").value.trim(),
-            category: document.getElementById("editCategory").value,
-            amount: Number(document.getElementById("editAmount").value),
-            due_date: document.getElementById("editDueDate").value,
-            frequency: document.getElementById("editFrequency").value,
-            reminder_before: Number(
-              document
-                .getElementById("editReminder")
-                .value.replace(" day", "")
-                .replace(" days", ""),
-            ),
-            description: document.getElementById("editNotes").value.trim(),
-          };
-
-          console.log("UPDATE PAYMENT DATA:", paymentData);
-
-          try {
-            const response = await fetch(
-              "https://payalert-3ivcbj4wf-rutuja-1e49.vercel.app/api/payments",
-              {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(paymentData),
-              },
-            );
-
-            const data = await response.json();
-
-            console.log("UPDATE PAYMENT RESPONSE:", data);
-
-            if (response.ok) {
-              alert("Payment updated successfully!");
-
-              window.location.href = "payments.html";
-            } else {
-              alert(data.message || "Failed to update payment.");
+              document.getElementById("editNotes").value = payment.description || "";
             }
-          } catch (error) {
-            console.error("Update payment error:", error);
 
-            alert("Unable to connect to the server.");
-          }
-        });
-      }
+            loadPaymentForEdit();
+            // =====================================================
+            // UPDATE PAYMENT
+            // =====================================================
+
+            const editForm = document.getElementById("editPaymentForm");
+
+            if (editForm) {
+              editForm.addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                const user = JSON.parse(
+                  localStorage.getItem("payalert_user") || "{}",
+                );
+
+                const params = new URLSearchParams(window.location.search);
+                const paymentId = params.get("id");
+
+                if (!user.id) {
+                  alert("Please login first.");
+                  return;
+                }
+
+                if (!paymentId) {
+                  alert("Payment ID not found.");
+                  return;
+                }
+
+                const paymentData = {
+                  id: paymentId,
+                  user_id: user.id,
+                  name: document.getElementById("editName").value.trim(),
+                  category: document.getElementById("editCategory").value,
+                  amount: Number(document.getElementById("editAmount").value),
+                  due_date: document.getElementById("editDueDate").value,
+                  frequency: document.getElementById("editFrequency").value,
+                  reminder_before: Number(
+                    document
+                      .getElementById("editReminder")
+                      .value.replace(" day", "")
+                      .replace(" days", ""),
+                  ),
+                  description: document.getElementById("editNotes").value.trim(),
+                };
+
+                console.log("UPDATE PAYMENT DATA:", paymentData);
+
+                try {
+                  const response = await fetch(
+                    "Replace:
+      https://payalert-azure.vercel.app/api/payments",
+                    {
+                      method: "PUT",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(paymentData),
+                    },
+                  );
+
+                  const data = await response.json();
+
+                  console.log("UPDATE PAYMENT RESPONSE:", data);
+
+                  if (response.ok) {
+                    alert("Payment updated successfully!");
+
+                    window.location.href = "payments.html";
+                  } else {
+                    alert(data.message || "Failed to update payment.");
+                  }
+                } catch (error) {
+                  console.error("Update payment error:", error);
+
+                  alert("Unable to connect to the server.");
+                }
+              });
+            }
     </script>
   </body>
 </html>
