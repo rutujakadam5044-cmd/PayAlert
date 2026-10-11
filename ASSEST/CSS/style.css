@@ -1142,3 +1142,41 @@ p {
     padding: 14px !important;
   }
 }
+
+/* HOME PAGE RESPONSIVE FIX */
+@media (max-width: 768px) {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-card {
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+  }
+
+  .hero,
+  .hero-grid,
+  .hero-grid > *,
+  .section,
+  .cards,
+  .footer {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .cards,
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nav-inner {
+    flex-wrap: wrap;
+  }
+}
