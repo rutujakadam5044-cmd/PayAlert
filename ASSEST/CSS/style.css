@@ -718,355 +718,358 @@ th {
    MOBILE
 ========================================================= */
 
-@media (max-width: 768px) {
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
+.card,
+.content {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+.container {
+  width: 92%;
+  max-width: 1180px;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        DASHBOARD LAYOUT
     ----------------------------------------- */
 
-  .dashboard-layout {
-    position: relative;
-    display: block !important;
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+.dashboard-layout {
+  position: relative;
+  display: block !important;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        HAMBURGER BUTTON
     ----------------------------------------- */
 
-  .mobile-menu-btn {
-    display: flex;
+.mobile-menu-btn {
+  display: flex;
 
-    position: fixed;
+  position: fixed;
 
-    top: 10px;
-    left: 10px;
+  top: 10px;
+  left: 10px;
 
-    width: 42px;
-    height: 42px;
+  width: 42px;
+  height: 42px;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    border: none;
-    border-radius: 8px;
+  border: none;
+  border-radius: 8px;
 
-    background: #ffffff;
-    color: #111827;
+  background: #ffffff;
+  color: #111827;
 
-    font-size: 24px;
-    line-height: 1;
+  font-size: 24px;
+  line-height: 1;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    z-index: 2001;
+  z-index: 2001;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        SIDEBAR - HIDDEN
     ----------------------------------------- */
 
-  .sidebar {
-    position: fixed !important;
+.sidebar {
+  position: fixed !important;
 
-    top: 0 !important;
-    left: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
 
-    width: 250px !important;
-    max-width: 80vw !important;
+  width: 250px !important;
+  max-width: 80vw !important;
 
-    height: 100vh !important;
+  height: 100vh !important;
 
-    z-index: 2000 !important;
+  z-index: 2000 !important;
 
-    transform: translateX(-110%) !important;
+  transform: translateX(-110%) !important;
 
-    transition: transform 0.3s ease !important;
+  transition: transform 0.3s ease !important;
 
-    overflow-y: auto;
+  overflow-y: auto;
 
-    margin: 0 !important;
-  }
+  margin: 0 !important;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        SIDEBAR - OPEN
     ----------------------------------------- */
 
-  .sidebar.mobile-open {
-    transform: translateX(0) !important;
-  }
+.sidebar.mobile-open {
+  transform: translateX(0) !important;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        SIDEBAR LINKS
     ----------------------------------------- */
 
-  .sidebar .side-link {
-    display: flex;
-    align-items: center;
+.sidebar .side-link {
+  display: flex;
+  align-items: center;
 
-    min-height: 48px;
+  min-height: 48px;
 
-    padding: 12px 18px;
+  padding: 12px 18px;
 
-    white-space: nowrap;
-  }
+  white-space: nowrap;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        LOGO
     ----------------------------------------- */
 
-  .sidebar .logo {
-    display: flex;
-    align-items: center;
+.sidebar .logo {
+  display: flex;
+  align-items: center;
 
-    padding: 20px;
-  }
+  padding: 20px;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        OVERLAY
     ----------------------------------------- */
 
-  .mobile-overlay {
-    display: block;
+.mobile-overlay {
+  display: block;
 
-    position: fixed;
+  position: fixed;
 
-    top: 0;
-    left: 0;
+  top: 0;
+  left: 0;
 
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 
-    background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.45);
 
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 
-    z-index: 1999;
+  z-index: 1999;
 
-    transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
-  }
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
 
-  .mobile-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        MAIN CONTENT
     ----------------------------------------- */
 
-  .main {
-    width: 100% !important;
+.main {
+  width: 100% !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    margin-left: 0 !important;
+  margin-left: 0 !important;
 
-    padding: 70px 15px 25px !important;
+  padding: 70px 15px 25px !important;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    overflow-x: hidden;
-  }
+  overflow-x: hidden;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        WELCOME SECTION
     ----------------------------------------- */
 
-  .welcome {
-    width: 100%;
-    max-width: 100%;
+.welcome {
+  width: 100%;
+  max-width: 100%;
 
-    overflow-wrap: break-word;
-  }
+  overflow-wrap: break-word;
+}
 
-  .welcome h1 {
-    font-size: 30px;
-    line-height: 1.2;
+.welcome h1 {
+  font-size: 30px;
+  line-height: 1.2;
 
-    max-width: 100%;
+  max-width: 100%;
 
-    overflow-wrap: break-word;
-  }
+  overflow-wrap: break-word;
+}
 
-  .welcome p {
-    font-size: 15px;
-    line-height: 1.5;
-  }
+.welcome p {
+  font-size: 15px;
+  line-height: 1.5;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        STAT CARDS
     ----------------------------------------- */
 
-  .stat-grid {
-    display: grid !important;
+.stat-grid {
+  display: grid !important;
 
-    grid-template-columns: 1fr !important;
+  grid-template-columns: 1fr !important;
 
-    width: 100% !important;
+  width: 100% !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    gap: 15px;
+  gap: 15px;
 
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+}
 
-  .stat {
-    width: 100% !important;
+.stat {
+  width: 100% !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    min-width: 0 !important;
+  min-width: 0 !important;
 
-    padding: 20px !important;
+  padding: 20px !important;
 
-    overflow: hidden;
-  }
+  overflow: hidden;
+}
 
-  .stat .value {
-    font-size: 28px;
-  }
+.stat .value {
+  font-size: 28px;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        PANELS
     ----------------------------------------- */
 
-  .panel {
-    width: 100% !important;
+.panel {
+  width: 100% !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    min-width: 0 !important;
+  min-width: 0 !important;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+}
 
-  .panel-head {
-    display: flex;
+.panel-head {
+  display: flex;
 
-    align-items: center;
+  align-items: center;
 
-    justify-content: space-between;
+  justify-content: space-between;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    gap: 10px;
-  }
+  gap: 10px;
+}
 
-  .panel-head h2 {
-    font-size: 20px;
-  }
+.panel-head h2 {
+  font-size: 20px;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        TABLES
     ----------------------------------------- */
 
-  .table-wrap {
-    width: 100% !important;
+.table-wrap {
+  width: 100% !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    overflow-x: auto;
+  overflow-x: auto;
 
-    -webkit-overflow-scrolling: touch;
-  }
+  -webkit-overflow-scrolling: touch;
+}
 
-  table {
-    min-width: 600px;
-  }
+table {
+  min-width: 600px;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        BUTTONS
     ----------------------------------------- */
 
-  .btn {
-    max-width: 100%;
+.btn {
+  max-width: 100%;
 
-    white-space: nowrap;
-  }
+  white-space: nowrap;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        FORMS
     ----------------------------------------- */
 
-  .form-group {
-    width: 100%;
-    max-width: 100%;
-  }
+.form-group {
+  width: 100%;
+  max-width: 100%;
+}
 
-  input,
-  select,
-  textarea {
-    width: 100% !important;
+input,
+select,
+textarea {
+  width: 100% !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    min-width: 0 !important;
+  min-width: 0 !important;
 
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-  textarea {
-    resize: vertical;
-  }
+textarea {
+  resize: vertical;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        CARDS / CONTENT
     ----------------------------------------- */
 
-  .card,
-  .content,
-  .container {
-    width: 100% !important;
+.card,
+.content,
+.container {
+  width: 100% !important;
 
-    max-width: 100% !important;
+  max-width: 100% !important;
 
-    min-width: 0 !important;
+  min-width: 0 !important;
 
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        IMAGES
     ----------------------------------------- */
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-  /* -----------------------------------------
+/* -----------------------------------------
        TEXT
     ----------------------------------------- */
 
-  h1,
-  h2,
-  h3,
-  h4,
-  p {
-    max-width: 100%;
-    overflow-wrap: break-word;
-  }
+h1,
+h2,
+h3,
+h4,
+p {
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 /* =========================================================

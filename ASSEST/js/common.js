@@ -206,108 +206,95 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-/* =========================================================
-   PAYALERT - MOBILE SIDEBAR
-========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const dashboardLayout = document.querySelector(".dashboard-layout");
+/* CREATE MOBILE MENU BUTTON */
 
-  const sidebar = document.querySelector(".sidebar");
+let menuButton = document.querySelector(".mobile-menu-btn");
 
-  if (!dashboardLayout || !sidebar) {
-    return;
+if (!menuButton) {
+  menuButton = document.createElement("button");
+
+  menuButton.className = "mobile-menu-btn";
+
+  menuButton.type = "button";
+
+  menuButton.setAttribute("aria-label", "Open menu");
+
+  menuButton.textContent = "☰";
+
+  dashboardLayout.prepend(menuButton);
+}
+
+/* CREATE OVERLAY */
+
+let overlay = document.querySelector(".mobile-overlay");
+
+if (!overlay) {
+  overlay = document.createElement("div");
+
+  overlay.className = "mobile-overlay";
+
+  document.body.appendChild(overlay);
+}
+
+/* OPEN SIDEBAR */
+
+function openSidebar() {
+  sidebar.classList.add("mobile-open");
+
+  overlay.classList.add("active");
+
+  menuButton.textContent = "✕";
+
+  menuButton.setAttribute("aria-label", "Close menu");
+}
+
+/* CLOSE SIDEBAR */
+
+function closeSidebar() {
+  sidebar.classList.remove("mobile-open");
+
+  overlay.classList.remove("active");
+
+  menuButton.textContent = "☰";
+
+  menuButton.setAttribute("aria-label", "Open menu");
+}
+
+/* MENU BUTTON */
+
+menuButton.addEventListener("click", () => {
+  if (sidebar.classList.contains("mobile-open")) {
+    closeSidebar();
+  } else {
+    openSidebar();
   }
+});
 
-  /* CREATE MOBILE MENU BUTTON */
+/* OVERLAY CLICK */
 
-  let menuButton = document.querySelector(".mobile-menu-btn");
+overlay.addEventListener("click", closeSidebar);
 
-  if (!menuButton) {
-    menuButton = document.createElement("button");
+/* CLOSE AFTER SIDEBAR LINK CLICK */
 
-    menuButton.className = "mobile-menu-btn";
+const sidebarLinks = sidebar.querySelectorAll("a");
 
-    menuButton.type = "button";
+sidebarLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      closeSidebar();
+    }
+  });
+});
 
-    menuButton.setAttribute("aria-label", "Open menu");
+/* RESET ON DESKTOP */
 
-    menuButton.textContent = "☰";
-
-    dashboardLayout.prepend(menuButton);
-  }
-
-  /* CREATE OVERLAY */
-
-  let overlay = document.querySelector(".mobile-overlay");
-
-  if (!overlay) {
-    overlay = document.createElement("div");
-
-    overlay.className = "mobile-overlay";
-
-    document.body.appendChild(overlay);
-  }
-
-  /* OPEN SIDEBAR */
-
-  function openSidebar() {
-    sidebar.classList.add("mobile-open");
-
-    overlay.classList.add("active");
-
-    menuButton.textContent = "✕";
-
-    menuButton.setAttribute("aria-label", "Close menu");
-  }
-
-  /* CLOSE SIDEBAR */
-
-  function closeSidebar() {
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
     sidebar.classList.remove("mobile-open");
 
     overlay.classList.remove("active");
 
     menuButton.textContent = "☰";
-
-    menuButton.setAttribute("aria-label", "Open menu");
   }
-
-  /* MENU BUTTON */
-
-  menuButton.addEventListener("click", () => {
-    if (sidebar.classList.contains("mobile-open")) {
-      closeSidebar();
-    } else {
-      openSidebar();
-    }
-  });
-
-  /* OVERLAY CLICK */
-
-  overlay.addEventListener("click", closeSidebar);
-
-  /* CLOSE AFTER SIDEBAR LINK CLICK */
-
-  const sidebarLinks = sidebar.querySelectorAll("a");
-
-  sidebarLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth <= 768) {
-        closeSidebar();
-      }
-    });
-  });
-
-  /* RESET ON DESKTOP */
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      sidebar.classList.remove("mobile-open");
-
-      overlay.classList.remove("active");
-
-      menuButton.textContent = "☰";
-    }
-  });
 });
