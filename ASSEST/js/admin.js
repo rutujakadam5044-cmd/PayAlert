@@ -730,22 +730,3 @@ window.addEventListener("load", () => {
   loadAdminMessages();
   loadReminderTemplates();
 });
-
-/* ================================
-   MOBILE SIDEBAR
-================================ */
-
-const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const sidebar = document.querySelector(".sidebar");
-
-if (mobileMenuBtn && sidebar) {
-  mobileMenuBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("mobile-open");
-
-    if (sidebar.classList.contains("mobile-open")) {
-      mobileMenuBtn.textContent = "✕";
-    } else {
-      mobileMenuBtn.textContent = "☰";
-    }
-  });
-}

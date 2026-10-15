@@ -1278,3 +1278,9 @@ p {
     padding: 20px;
   }
 }
+@media (max-width: 768px) {
+  .admin-theme .sidebar.mobile-open {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+  }
+}

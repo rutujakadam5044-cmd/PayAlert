@@ -854,3 +854,14 @@ window.addEventListener("load", () => {
   loadNotificationSettings();
   loadReports();
 });
+
+/* DISPLAY USER NAME */
+document.addEventListener("DOMContentLoaded", () => {
+  const user = JSON.parse(localStorage.getItem("payalert_user") || "{}");
+
+  const nameElements = document.querySelectorAll("[data-user-name]");
+
+  nameElements.forEach((element) => {
+    element.textContent = user.name || "User";
+  });
+});

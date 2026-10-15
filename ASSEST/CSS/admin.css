@@ -7,10 +7,37 @@
 .admin-theme .stat .value {
   color: #111827;
 }
+
 /* ================================
-   MOBILE MENU
+   ADMIN MOBILE MENU
 ================================ */
 
-.mobile-menu-btn {
-  display: none;
+@media (max-width: 768px) {
+  .admin-theme .mobile-menu-btn {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 10003;
+    cursor: pointer;
+  }
+
+  .admin-theme .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    max-width: 85vw;
+    height: 100vh;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 10001;
+    background: #111827;
+  }
+
+  .admin-theme .sidebar.mobile-open {
+    transform: translateX(0);
+  }
 }

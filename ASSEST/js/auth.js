@@ -195,7 +195,7 @@ if (adminLoginForm) {
       localStorage.setItem("payalert_admin", JSON.stringify(data.user));
 
       alert("Admin login successful!");
-      window.location.href = "dashboard.html";
+      window.location.href = "/ADMIN/dashboard.html";
     } catch (error) {
       console.error("Admin login error:", error);
       alert("Unable to connect to the server.");
