@@ -139,41 +139,66 @@ if (userLoginForm) {
     }
   });
 }
-
-// =====================================================
-// ADMIN LOGIN
-// =====================================================
-
+// ------------------------------------------------//
+//ADMIN LOGIN
+//------------------------------------------------//
 const adminLoginForm = document.getElementById("adminLoginForm");
 
 if (adminLoginForm) {
-  adminLoginForm.addEventListener("submit", function (event) {
+  adminLoginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const emailInput = document.getElementById("adminEmail");
     const passwordInput = document.getElementById("adminPassword");
 
+    if (!emailInput || !passwordInput) {
+      alert("Admin login fields are missing.");
+      return;
+    }
+
     const email = emailInput.value.trim();
     const password = passwordInput.value;
 
-    // Temporary admin credentials
-    const adminEmail = "admin@payalert.com";
-    const adminPassword = "admin123";
+    if (!email || !password) {
+      alert("Please enter email and password.");
+      return;
+    }
 
-    if (email === adminEmail && password === adminPassword) {
-      localStorage.setItem(
-        "payalert_admin",
-        JSON.stringify({
-          email: adminEmail,
-          role: "admin",
-        }),
+    try {
+      const response = await fetch(
+        "https://payalert-azure.vercel.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        },
       );
 
-      alert("Admin login successful!");
+      const data = await response.json();
 
+      console.log("ADMIN LOGIN RESPONSE:", data);
+      console.log("USER DATA:", data.user);
+      console.log("ADMIN ROLE:", data.user?.role);
+
+      if (!response.ok) {
+        alert(data.message || "Invalid email or password.");
+        return;
+      }
+
+      if (!data.user || data.user.role !== "admin") {
+        alert("This account does not have admin access.");
+        return;
+      }
+
+      localStorage.setItem("payalert_admin", JSON.stringify(data.user));
+
+      alert("Admin login successful!");
       window.location.href = "dashboard.html";
-    } else {
-      alert("Invalid admin email or password.");
+    } catch (error) {
+      console.error("Admin login error:", error);
+      alert("Unable to connect to the server.");
     }
   });
 }

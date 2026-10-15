@@ -1180,3 +1180,101 @@ p {
     flex-wrap: wrap;
   }
 }
+
+/* NOTIFICATION SETTINGS PAGE FIX */
+
+.user-theme .dashboard-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.user-theme .sidebar {
+  position: sticky;
+  top: 0;
+  width: 240px;
+  max-width: none;
+  height: 100vh;
+  transform: none;
+  overflow-y: auto;
+}
+
+.user-theme .main {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 30px;
+  overflow-x: hidden;
+}
+
+.user-theme .page-head {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.user-theme .form-card {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.user-theme #settingsForm .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.user-theme #settingsForm .checkbox input {
+  width: 16px !important;
+  min-width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.user-theme #settingsForm .form-group input[type="time"] {
+  width: 100%;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .user-theme .dashboard-layout {
+    display: block;
+  }
+
+  .user-theme .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    max-width: 80vw;
+    height: 100vh;
+    transform: translateX(-110%);
+    z-index: 2000;
+  }
+
+  .user-theme .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .user-theme .main {
+    width: 100%;
+    padding: 70px 18px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-theme .main {
+    padding: 65px 12px 20px;
+  }
+
+  .user-theme .form-card {
+    padding: 20px;
+  }
+}
